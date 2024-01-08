@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion Functions</title>
+    <style>
+        table {
+
+            width: 50%;
+            margin: 20px;
+        }
+        th, td {
+            border: 1px solid #bcbbbb;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    function footToMeter(foot) {
+        return 0.305 * foot;
+    }
+    function meterToFoot(meter) {
+        return 3.279 * meter;
+    }
+    function displayConversionTable() {
+        const values = [1, 2, 3, 5, 10];
+        let tableHTML = '<table>';
+        tableHTML += '<tr><th>Feet</th><th>Meters</th><th>Meters to Feet</th><th>Feet to Meters</th></tr>';
+        values.forEach(value => {
+            const meterValue = footToMeter(value);
+            const footValue = meterToFoot(value);
+            tableHTML += `<tr><td>${value}</td><td>${meterValue.toFixed(2)}</td><td>${meterValue}</td><td>${footValue.toFixed(2)}</td></tr>`;
+        });
+        tableHTML += '</table>';
+        document.body.innerHTML += tableHTML;
+    }
+    window.onload = displayConversionTable;
+</script>
+</body>
+</html>

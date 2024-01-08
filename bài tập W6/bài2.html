@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Numbers</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 20px;
+        }
+        th, td {
+            border: 1px solid white;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    function isPrime(number) {
+        if (number <= 1) {
+            return false;
+        }
+        for (let i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i === 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    function displayPrimeNumbers() {
+        const primeNumbers = [];
+        for (let i = 2; i < 10000; i++) {
+            if (isPrime(i)) {
+                primeNumbers.push(i);
+            }
+        }
+        let tableHTML = '<table>';
+        tableHTML += '<tr><th>Prime Numbers</th></tr>';
+        primeNumbers.forEach(number => {
+            tableHTML += `<tr><td>${number}</td></tr>`;
+        });
+        tableHTML += '</table>';
+        document.body.innerHTML += tableHTML;
+    }
+    window.onload = displayPrimeNumbers;
+</script>
+</body>
+</html>

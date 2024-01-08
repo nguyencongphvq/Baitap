@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Số Đảo Ngược</title>
+</head>
+<body>
+    <h2>Số Đảo Ngược</h2>
+    <label for="soNguyenDuong">Nhập số nguyên dương:</label>
+    <input type="number" id="soNguyenDuong" min="1" required>
+    <button onclick="daoNguocSo()">Đảo ngược số</button>
+    <div id="result"></div>
+    <script>
+        function daoNguocSo() {
+            var soNguyenDuong = document.getElementById("soNguyenDuong").value;
+            var resultDiv = document.getElementById("result");
+            if (soNguyenDuong > 0) {
+                var soDaoNguoc = parseInt(soNguyenDuong.toString().split('').reverse().join(''));
+                resultDiv.innerHTML = "Số đảo ngược: " + soDaoNguoc;
+            } else {
+                resultDiv.innerHTML = "Vui lòng nhập số nguyên dương hợp lệ.";
+            }
+        }
+    </script>
+</body>
+</html>

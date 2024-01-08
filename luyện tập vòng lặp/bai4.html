@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Số Fibonacci Chia Hết Cho 5</title>
+</head>
+<body>
+    <h2>Số Fibonacci Chia Hết Cho 5</h2>
+    <div></div>
+    <script>
+        var firstFibonacci = findFirstFibonacciDivisibleByFive();
+        document.getElementById("result").innerHTML = "Số đầu tiên trong dãy Fibonacci chia hết cho 5 là: " + firstFibonacci;
+        function findFirstFibonacciDivisibleByFive() {
+            var a = 0;
+            var b = 1;
+            while (true) {
+                var temp = a + b;
+                if (temp % 5 === 0) {
+                    return temp;
+                }
+                a = b;
+                b = temp;
+            }
+        }
+    </script>
+</body>
+</html>

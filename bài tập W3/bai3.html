@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra cứu giá hoa quả</title>
+</head>
+<body>
+    <h2>Tra cứu giá hoa quả</h2>
+    <label for="hoaQua">Chọn hoa quả:</label>
+    <select id="hoaQua">
+        <option value="Ổi">Ổi</option>
+        <option value="Dưa Hấu">Dưa Hấu</option>
+        <option value="Táo">Táo</option>
+        <option value="Xoài">Xoài</option>
+        <option value="Cam">Cam</option>
+        <option value="Chôm Chôm">Chôm Chôm</option>
+        <option value="Măng Cụt">Măng Cụt</option>
+    </select>
+    <button onclick="traCuuGia()">Tra cứu giá</button>
+    <div id="result"></div>
+    <script>
+        function traCuuGia() {
+            var hoaQua = document.getElementById("hoaQua").value;
+            var resultDiv = document.getElementById("result");
+            var giaHoaQua = {
+                'Ổi': 20000,
+                'Dưa Hấu': 20000,
+                'Táo': 30000,
+                'Xoài': 30000,
+                'Cam': 40000,
+                'Chôm Chôm': 40000,
+                'Măng Cụt': 50000
+            };
+            if (giaHoaQua.hasOwnProperty(hoaQua)) {
+                resultDiv.innerHTML = "Giá của " + hoaQua + " là " + giaHoaQua[hoaQua].toLocaleString() + " VNĐ/kg";
+            } else {
+                resultDiv.innerHTML = "Không tìm thấy thông tin về " + hoaQua;
+            }
+        }
+    </script>
+</body>
+</html>

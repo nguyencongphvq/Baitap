@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chuyển Đổi Tiền Tệ</title>
+</head>
+<body>
+<div>
+  <h2>Chuyển Đổi Tiền Tệ</h2>
+  <label for="fromCurrency">From Currency:</label>
+  <select ></select>
+  <label for="toCurrency">To Currency:</label>
+  <select ></select>
+  <label for="amount">Amount:</label>
+  <input type="number" placeholder="Enter amount">
+  <button onclick="convertCurrency()">Convert</button>
+  <div></div>
+</div>
+<script>
+   const apiKey = 'YOUR_FIXER_IO_API_KEY';
+const fromCurrencySelect = document.getElementById('fromCurrency');
+const toCurrencySelect = document.getElementById('toCurrency');
+const amountInput = document.getElementById('amount');
+const resultDiv = document.getElementById('result');
+// Lấy danh sách đồng tiền từ API và điền vào các dropdown
+fetch(`https://open.er-api.com/v6/latest`)
+  .then(response => response.json())
+  .then(data => {
+    const currencies = Object.keys(data.rates);
+    currencies.forEach(currency => {
+      const option1 = document.createElement('option');
+      const option2 = document.createElement('option');
+      option1.value = currency;
+      option1.text = currency;
+      option2.value = currency;
+      option2.text = currency;
+      fromCurrencySelect.add(option1);
+      toCurrencySelect.add(option2);
+    });
+  });
+// Hàm chuyển đổi tiền tệ
+function convertCurrency() {
+  const fromCurrency = fromCurrencySelect.value;
+  const toCurrency = toCurrencySelect.value;
+  const amount = amountInput.value;
+  fetch(`https://open.er-api.com/v6/latest`)
+    .then(response => response.json())
+    .then(data => {
+      const exchangeRate = data.rates[toCurrency] / data.rates[fromCurrency];
+      const convertedAmount = (amount * exchangeRate).toFixed(2);
+      resultDiv.innerHTML = `${amount} ${fromCurrency} is equal to ${convertedAmount} ${toCurrency}`;
+    })
+    .catch(error => {
+      console.error('Error fetching exchange rates:', error);
+      resultDiv.innerHTML = 'Error converting currency. Please try again.';
+    });
+}
+</script>
+</body>
+</html>

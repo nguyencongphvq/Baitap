@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="clickme" onclick="play()">Chơi</button>
+</body>
+<script>
+    function play(){
+        let max = prompt("Nhập giới hạn lớn nhất ")
+        let numRandom = Math.floor(Math.random()*max)
+        let num = prompt("Nhập số bạn đoán ")
+        if(num < numRandom || num > numRandom){
+            do {
+                num = prompt("Mời bạn nhập lại ")
+                if(num == numRandom){break}
+            }
+            while(num < numRandom || num > numRandom)
+        }
+      alert("Chúc mừng bạn đoán đúng") 
+    }
+</script>
+</html>

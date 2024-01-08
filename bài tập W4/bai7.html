@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Số Nguyên Tố</title>
+</head>
+<body>
+    <h2>Số Nguyên Tố</h2>
+    <div></div>
+    <script>
+        var numbers = parseInt(prompt("Nhập số lượng số nguyên tố cần hiển thị:"));
+        var count = 0;
+        var N = 2;
+        var resultDiv = document.getElementById("result");
+        while (count < numbers) {
+            if (isPrime(N)) {
+                resultDiv.innerHTML += N + ", ";
+                count++;
+            }
+            N++;
+        }
+        function isPrime(num) {
+            for (var i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) {
+                    return false;
+                }
+            }
+            return num > 1;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển đổi Chữ Hoa - Chữ Thường</title>
+</head>
+<body>
+    <h2>Chuyển đổi Chữ Hoa - Chữ Thường</h2>
+    <label for="inputString">Nhập chuỗi:</label>
+    <input type="text" id="inputString" required>
+    <button onclick="convertCase()">Chuyển đổi</button>
+    <div id="result"></div>
+    <script>
+        function convertCase() {
+            var inputString = document.getElementById("inputString").value;
+            var resultDiv = document.getElementById("result");
+            var convertedString = "";
+            for (var i = 0; i < inputString.length; i++) {
+                var currentChar = inputString[i];
+                if (currentChar === currentChar.toUpperCase()) {
+                    convertedString += currentChar.toLowerCase();
+                } else {
+                    convertedString += currentChar.toUpperCase();
+                }
+            }
+            resultDiv.innerHTML = "Chuỗi sau khi chuyển đổi: " + convertedString;
+        }
+    </script>
+</body>
+</html>

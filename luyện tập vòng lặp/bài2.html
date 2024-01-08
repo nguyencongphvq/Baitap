@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    let nhietDo = prompt("Nhap nhiet do")
+    while(nhietDo > 100 || nhietDo < 20){  
+        if(nhietDo > 100){
+            nhietDo = prompt("Nhiệt độ quá cao nhập lại: ")
+        }    
+        else if(nhietDo < 20){
+            nhietDo = prompt("Nhiệt độ quá thấp nhập lại: ")
+        } 
+    }
+    alert("Nhiệt độ bạn vừa nhập là "+nhietDo)
+</script>
+</html>

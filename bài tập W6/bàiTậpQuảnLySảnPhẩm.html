@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sản phẩm</title>
+</head>
+<body>
+    <h2>Danh sách sản phẩm</h2>
+    <ul id="productList"></ul>
+    <h2>Thêm sản phẩm mới</h2>
+    <form id="addProductForm">
+        <label for="productName">Tên sản phẩm:</label>
+        <input type="text" id="productName" required>
+        <button type="submit">Thêm sản phẩm</button>
+    </form>
+    <script>
+        var products = [
+            { id: 1, name: "Sản phẩm 1" },
+            { id: 2, name: "Sản phẩm 2" },
+            { id: 3, name: "Sản phẩm 3" }
+        ];
+        displayProducts();
+        document.getElementById("addProductForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            addProduct(document.getElementById("productName").value);
+        });
+        function displayProducts() {
+            var productList = document.getElementById("productList");
+            productList.innerHTML = "";
+
+            products.forEach(function (product) {
+                var listItem = document.createElement("li");
+                listItem.innerHTML = `${product.name} <button onclick="editProduct(${product.id})">Sửa</button> <button onclick="deleteProduct(${product.id})">Xoá</button>`;
+                productList.appendChild(listItem);
+            });
+        }
+        function addProduct(productName) {
+            var newProduct = { id: products.length + 1, name: productName };
+            products.push(newProduct);
+            displayProducts();
+        }
+        function editProduct(productId) {
+            var newName = prompt("Nhập tên mới cho sản phẩm:");
+            if (newName !== null) {
+                var product = products.find(p => p.id === productId);
+                if (product) {
+                    product.name = newName;
+                    displayProducts();
+                } else {
+                    alert("Không tìm thấy sản phẩm");
+                }
+            }
+        }
+        function deleteProduct(productId) {
+            var confirmed = confirm("Bạn có chắc chắn muốn xoá sản phẩm này?");
+            if (confirmed) {
+                products = products.filter(p => p.id !== productId);
+                displayProducts();
+            }
+        }
+    </script>
+</body>
+</html>

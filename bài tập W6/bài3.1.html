@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare and Sum</title>
+</head>
+<body>
+    <button onclick="handleClick()">So sánh và tính tổng</button>
+</body>
+   <script>
+    function compareAndSum(param1, param2) {
+        if (param1 > param2) {
+            alert("Giá trị của tham số thứ nhất lớn hơn tham số thứ hai!");
+        } else {
+            return param1 + param2;
+        }
+    }
+    function handleClick() {
+        var param1 = parseFloat(prompt("Nhập giá trị tham số thứ nhất:"));
+        var param2 = parseFloat(prompt("Nhập giá trị tham số thứ hai:"));
+        if (!isNaN(param1) && !isNaN(param2)) {
+            var result = compareAndSum(param1, param2);
+            if (result !== undefined) {
+                alert("Tổng của hai tham số là: " + result);
+            }
+        } else {
+            alert("Vui lòng nhập số hợp lệ cho cả hai tham số.");
+        }
+    }
+   </script>
+</html>

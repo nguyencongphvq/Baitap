@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Cửu Chương</title>
+</head>
+<body>
+    <h2>Bảng Cửu Chương</h2>
+    <table id="cuuChuongTable"></table>
+    <script>
+        var cuuChuongTable = document.getElementById("cuuChuongTable");
+        // Tạo hàng và cột cho bảng cửu chương
+        for (var i = 1; i <= 9; i++) {
+            var row = cuuChuongTable.insertRow();
+            var cell = row.insertCell();
+            // Thêm số vào ô đầu tiên của mỗi hàng
+            cell.innerHTML = `<strong>${i}</strong>`;
+            for (var j = 1; j <= 9; j++) {
+                cell = row.insertCell();
+                // Thêm kết quả nhân i và j vào ô
+                cell.innerHTML = `${i} x ${j} = ${i * j}`;
+            }
+        }
+    </script>
+</body>
+</html>
